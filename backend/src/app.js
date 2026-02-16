@@ -6,6 +6,7 @@ const restaurantRoutes = require("./routes/restaurant.routes");
 const menuRoutes = require("./routes/menu.routes");
 const cartRoutes = require("./routes/cart.routes");
 const orderRoutes = require("./routes/order.routes");
+const paymentRoutes = require("./routes/payment.routes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/menu", menuRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/payments", paymentRoutes);
 
 app.get("/", (req, res) => {
   res.send("Food Delivery API Running");
