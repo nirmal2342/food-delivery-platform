@@ -5,22 +5,34 @@ const deliverySchema = new mongoose.Schema(
     order: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Order",
+      required: true,
     },
 
     deliveryPartner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
 
     status: {
       type: String,
-      enum: ["assigned", "picked", "on_the_way", "delivered"],
+      enum: [
+        "assigned",
+        "picked",
+        "on_the_way",
+        "delivered"
+      ],
       default: "assigned",
     },
 
-    assignedAt: Date,
+    assignedAt: {
+      type: Date,
+      default: Date.now,
+    },
 
-    deliveredAt: Date,
+    deliveredAt: {
+      type: Date,
+    },
   },
   {
     timestamps: true,
