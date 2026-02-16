@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
+const swaggerUI = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
+
 const authRoutes = require("./routes/auth.routes");
 const restaurantRoutes = require("./routes/restaurant.routes");
 const menuRoutes = require("./routes/menu.routes");
@@ -21,6 +24,8 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/delivery", deliveryRoutes);
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.get("/", (req, res) => {
   res.send("Food Delivery API Running");
