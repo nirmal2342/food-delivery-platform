@@ -6,18 +6,15 @@ const options = {
     info: {
       title: "Food Delivery API",
       version: "1.0.0",
-      description: "Food Delivery Backend API Documentation (MERN Stack)",
+      description: "Food Delivery Backend API Documentation",
     },
     servers: [
       {
-        url: "http://localhost:5000",
+        url: process.env.RENDER_EXTERNAL_URL || "http://localhost:5000",
       },
     ],
   },
-
-  apis: ["./src/routes/*.js"], 
+  apis: ["./src/routes/*.js"],
 };
 
-const swaggerSpec = swaggerJSDoc(options);
-
-module.exports = swaggerSpec;
+module.exports = swaggerJSDoc(options);
