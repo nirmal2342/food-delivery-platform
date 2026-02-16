@@ -4,11 +4,18 @@ const orderItemSchema = new mongoose.Schema({
   menuItem: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "MenuItem",
+    required: true,
   },
 
-  quantity: Number,
+  quantity: {
+    type: Number,
+    required: true,
+  },
 
-  price: Number,
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
 const orderSchema = new mongoose.Schema(
@@ -16,17 +23,18 @@ const orderSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    },
-
-    restaurant: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Restaurant",
+      required: true,
     },
 
     items: [orderItemSchema],
 
     totalAmount: {
       type: Number,
+      required: true,
+    },
+
+    deliveryAddress: {
+      type: String,
       required: true,
     },
 
@@ -41,10 +49,6 @@ const orderSchema = new mongoose.Schema(
         "cancelled",
       ],
       default: "pending",
-    },
-
-    deliveryAddress: {
-      type: String,
     },
   },
   {
