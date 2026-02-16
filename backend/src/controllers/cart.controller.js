@@ -1,5 +1,5 @@
 const Cart = require("../models/Cart.model");
-const MenuItem = require("../models/MenuItem");
+const MenuItem = require("../models/MenuItem.model");
 
 
 // @desc Add item to cart
